@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Container from "./container";
+import { SparklesText } from "../magicui/sparkles-text";
 
 export default function Header() {
   return (
@@ -9,9 +10,11 @@ export default function Header() {
       <Container>
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-4">
-            <p className="font-bold text-2xl">
-              <Link href="/dashboard">Safha</Link>
-            </p>
+        
+              <Link href="/dashboard">
+              <SparklesText text="Safha" className="text-3xl"/>
+              </Link>
+        
           </div>
           <div className="flex justify-center items-center gap-4">
             <SignedOut>
