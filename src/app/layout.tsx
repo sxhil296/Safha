@@ -4,6 +4,8 @@ import "./globals.css";
 import Footer from "@/components/layout/footer";
 import Header from "@/components/layout/header";
 import { ClerkProvider } from "@clerk/nextjs";
+import { HeroHeader } from "@/components/hero5-header";
+import FooterSection from "@/components/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,13 +29,15 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="dark">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen grid grid-rows-[auto_1fr_auto]`}
       >
-        <Header />
+        {/* <Header /> */}
+        {/* <HeroHeader /> */}
         {children}
-        <Footer />
+        {/* <Footer /> */}
+        {/* <FooterSection />*/}
       </body>
     </html>
     </ClerkProvider>

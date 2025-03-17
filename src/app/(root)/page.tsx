@@ -1,9 +1,10 @@
 import Hero from "@/components/hero";
+import HeroSection from "@/components/hero-section";
 
 export default function Home() {
   return (
-    <main className="flex justify-center items-center">
-      <Hero />
+    <main>
+      <HeroSection />
     </main>
   );
 }
