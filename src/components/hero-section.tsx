@@ -150,7 +150,7 @@ export default function HeroSection() {
                       size="lg"
                       className="rounded-xl px-5 text-base"
                     >
-                      <Link href="#link">
+                      <Link href="/add-book">
                         <span className="text-nowrap">Upload a Book</span>
                       </Link>
                     </Button>
@@ -162,7 +162,7 @@ export default function HeroSection() {
                     variant="outline"
                     className="h-10.5 rounded-xl px-5"
                   >
-                    <Link href="#link">
+                    <Link href="#books">
                       <span className="text-nowrap">Read a Book</span>
                     </Link>
                   </Button>
@@ -188,7 +188,7 @@ export default function HeroSection() {
                   className="bg-linear-to-b to-background absolute inset-0 z-10 from-transparent from-35%"
                 />
                 <div className="inset-shadow-2xs px-2 sm:px-0 dark:inset-shadow-white/20 relative mx-auto max-w-6xl overflow-hidden rounded-2xl shadow-lg shadow-zinc-950/15">
-                  <div className=" relative  block">
+                  <div className=" relative  block bg-background aspect-15/8   rounded-2xl ">
                     <Safari
                       url="safha.com"
                       className="size-full"
