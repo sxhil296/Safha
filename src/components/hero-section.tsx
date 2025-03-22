@@ -188,7 +188,7 @@ export default function HeroSection() {
                   className="bg-linear-to-b to-background absolute inset-0 z-10 from-transparent from-35%"
                 />
                 <div className="inset-shadow-2xs px-2 sm:px-0 dark:inset-shadow-white/20 relative mx-auto max-w-6xl overflow-hidden rounded-2xl shadow-lg shadow-zinc-950/15">
-                  <div className=" relative  block bg-background aspect-15/8   rounded-2xl ">
+                  <div className=" relative  block bg-background p-2  rounded-2xl ">
                     <Safari
                       url="safha.com"
                       className="size-full"
