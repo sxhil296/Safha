@@ -1,4 +1,4 @@
-'use client'
+
 import Container from "@/components/layout/container";
 
 
@@ -15,7 +15,7 @@ export default function AddBookPage() {
 
   return (
     <div className="w-full mt-20">
-      <Container className="flex flex-col gap-5">
+      <Container >
         <div>Add Book</div>
        <AddBookForm />
       </Container>

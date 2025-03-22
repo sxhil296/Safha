@@ -1,42 +1,67 @@
 "use server";
 
- type Errors = {
+import { db } from "@/db";
+import { Books } from "@/db/schema";
+import { auth } from "@clerk/nextjs/server";
+import { randomUUID } from "crypto";
+import { revalidatePath } from "next/cache";
+
+type Errors = {
   title?: string;
   author?: string;
-  bookCategory?: string;
+  category?: string;
   description?: string;
-  bookPDF?: string;
+  bookPdf?: string;
 };
-export type FormState = {
-    errors: Errors;
-  } | undefined;
 
-export async function addBookAction(prevState:FormState, formData: FormData) {
-  const title = formData.get("title") as string;
-  const author = formData.get("author") as string;
-  const bookCategory = formData.get("bookCategory") as string;
-  const description = formData.get("description") as string;
-  const bookPDF = formData.get("book") as File;
+export type FormState =
+  | {
+      errors: Errors;
+    }
+  | undefined;
+
+export async function addBookAction(prevState: FormState, formData: FormData) {
+  const { userId, redirectToSignIn } = await auth();
+
+  // if (!userId) return redirectToSignIn();
+  const id = randomUUID();
+  const title = (formData.get("title") as string) || "";
+  const author = (formData.get("author") as string) || "";
+  const category = (formData.get("category") as string) || "";
+  const description = (formData.get("description") as string) || "";
+  const bookPdf = (formData.get("book") as File) || new File([], "");
 
   const errors: Errors = {};
 
-  if (!title || title.trim().length < 3) {
-    errors.title =
-      "Title is reqiured and must be at least three characters long.";
+  if (!title) {
+    errors.title = "Title is required";
   }
-
-  if (!author || author.trim().length < 3) {
-    errors.author =
-      "Author name is reqiured and must be at least three characters long.";
+  if (!author) {
+    errors.author = "Author name is required";
   }
-  if (!bookCategory) {
-    errors.bookCategory = "Book Category name is reqiured.";
+  if (!category) {
+    errors.category = "Book Category is required";
   }
-  if (!bookPDF) {
-    errors.bookPDF = "Book PDF File is reqiured.";
+  if (!description) {
+    errors.description = "Book Description is required";
+  }
+  if (!bookPdf) {
+    errors.bookPdf = "Book PDF file is required";
   }
 
   if (Object.keys(errors).length > 0) {
     return { errors };
   }
+
+  const result = await db.insert(Books).values({
+    id: id,
+    title,
+    author,
+    bookCategory: category,
+    description,
+    bookPDF: bookPdf,
+    userId,
+  });
+  revalidatePath("/dashboard/create", "page");
+  return result;
 }
