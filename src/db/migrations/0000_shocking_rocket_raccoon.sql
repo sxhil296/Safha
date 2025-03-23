@@ -5,6 +5,6 @@ CREATE TABLE "books" (
 	"author" text NOT NULL,
 	"category" text NOT NULL,
 	"description" text,
-	"file" text,
+	"book" text,
 	"userId" text NOT NULL
 );
