@@ -1,3 +1,4 @@
+import BookList from "@/components/bookList";
 import HeroSection from "@/components/hero-section";
 import { db } from "@/db";
 import { sql } from "drizzle-orm";
@@ -7,7 +8,8 @@ export default async function Home() {
   return (
     <main>
       <HeroSection />
-      {JSON.stringify(results)}
+      {/* {JSON.stringify(results)} */}
+      <BookList />
     </main>
   );
 }

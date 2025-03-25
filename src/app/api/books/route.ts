@@ -9,7 +9,7 @@ export async function POST(request: Request) {
   const { userId, redirectToSignIn } = await auth();
   if (!userId) return redirectToSignIn();
   const { title, author, category, description, book } = body;
-  console.log(">>>>", id, title, author, category, description, userId)
+  console.log(">>>>", id, title, author, category, description, userId);
   const newBook = await db.insert(Books).values({
     id,
     title,
@@ -25,4 +25,10 @@ export async function POST(request: Request) {
       "Content-Type": "application/json",
     },
   });
+}
+
+// get all books
+export async function GET(request: Request) {
+  const books = await db.select().from(Books);
+  return new Response(JSON.stringify(books));
 }
