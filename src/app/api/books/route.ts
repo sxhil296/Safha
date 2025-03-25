@@ -32,3 +32,5 @@ export async function GET(request: Request) {
   const books = await db.select().from(Books);
   return new Response(JSON.stringify(books));
 }
+
+

@@ -6,10 +6,12 @@ import React from "react";
 import { cn } from "@/lib/utils";
 import { SparklesText } from "./magicui/sparkles-text";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { usePathname } from "next/navigation";
 
 export const HeroHeader = () => {
   const [menuState, setMenuState] = React.useState(false);
   const [isScrolled, setIsScrolled] = React.useState(false);
+  const pathname = usePathname();
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -26,9 +28,9 @@ export const HeroHeader = () => {
       >
         <div
           className={cn(
-            "mx-auto mt-2 max-w-6xl px-6 transition-all duration-300 lg:px-12",
+            "mx-auto mt-2 max-w-7xl px-6 transition-all duration-300 lg:px-12",
             isScrolled &&
-              "bg-background/50 max-w-4xl rounded-2xl border backdrop-blur-lg lg:px-5"
+              "bg-background/50 max-w-6xl rounded-2xl border backdrop-blur-lg lg:px-5"
           )}
         >
           <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
@@ -49,33 +51,53 @@ export const HeroHeader = () => {
 
             <div className="bg-background in-data-[state=active]:block lg:in-data-[state=active]:flex mb-6 hidden w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border p-6 shadow-2xl shadow-zinc-300/20 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none dark:shadow-none dark:lg:bg-transparent">
               <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
-           <div className="flex justify-center items-center gap-2">
-           <div className={cn(isScrolled && "lg:hidden")}>
+                <div className="flex justify-center items-center gap-2">
+                  {/* <div className={cn(isScrolled && "lg:hidden")}>
                   <SignedOut>
                     <SignInButton />
                   </SignedOut>
-                </div>
-                <div className={cn(isScrolled && "lg:hidden")}>
-                  <SignedOut>
-                    <Button variant="default" asChild>
-                      <Link href="/sign-up">Get Started</Link>
-                    </Button>
-                  </SignedOut>
+                </div> */}
+                  <div className={cn(isScrolled && "lg:hidden")}>
+                    <SignedOut>
+                      <Button variant="default" asChild>
+                        <Link href="/sign-in">Upload a Book</Link>
+                      </Button>
+                    </SignedOut>
 
-                  <SignedIn>
-                    <UserButton />
-                  </SignedIn>
+                    <div className="flex justify-center gap-2">
+                      <SignedIn>
+                        <Link href="/my-books">
+                          <span
+                            className={`font-normal text-lg hover:text-[#b0e681] ${
+                              pathname === "my-books" && "text-[#b0e681]"
+                            }`}
+                          >
+                            My Books
+                          </span>
+                        </Link>
+                      </SignedIn>
+                      <SignedIn>
+                        <Link href="/add-book">
+                          <span
+                            className={`font-normal text-lg hover:text-[#b0e681] ${
+                              pathname === "add-book" && "text-[#b0e681]"
+                            }`}
+                          >
+                            Add Book
+                          </span>
+                        </Link>
+                      </SignedIn>
+                    </div>
+                  </div>
                 </div>
-           </div>
 
                 <Button
                   asChild
-                  size="sm"
                   className={cn(isScrolled ? "lg:inline-flex" : "hidden")}
                 >
-                  <Link href="/add-book">
-                    <span>Upload a Book</span>
-                  </Link>
+                  <SignedIn>
+                    <UserButton />
+                  </SignedIn>
                 </Button>
               </div>
             </div>

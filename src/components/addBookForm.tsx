@@ -102,7 +102,7 @@ export default function AddBookForm() {
 
   return (
     <form
-      className="flex flex-col w-full max-w-[500px] items-start gap-5 mx-auto"
+      className="flex flex-col w-full max-w-[500px] items-start gap-5"
       onSubmit={handleBookFormSubmit}
     >
       <div className="flex flex-col gap-1 items-start w-full">
@@ -118,7 +118,7 @@ export default function AddBookForm() {
           placeholder="Title of the book"
           className="w-full rounded"
         />
-        {errors.title && <p className="text-sm text-red-500">{errors.title}</p>}
+        {errors.title && <p className="text-sm text-red">{errors.title}</p>}
       </div>
       <div className="flex flex-col gap-1 items-start w-full">
         <Label htmlFor="author" className="text-sm font-medium">
@@ -134,7 +134,7 @@ export default function AddBookForm() {
           className="w-full rounded"
         />
         {errors.author && (
-          <p className="text-sm text-red-500">{errors.author}</p>
+          <p className="text-sm text-red">{errors.author}</p>
         )}
       </div>
       <div className="flex flex-col gap-1 items-start w-full">
@@ -169,12 +169,13 @@ export default function AddBookForm() {
           </SelectContent>
         </Select>
         {errors.category && (
-          <p className="text-sm text-red-500">{errors.category}</p>
+          <p className="text-sm text-red">{errors.category}</p>
         )}
       </div>
       <div className="flex flex-col gap-1 items-start w-full">
         <Label htmlFor="Description" className="text-sm font-medium">
           Description
+          <span className="text-red text-lg">*</span>
         </Label>
         <Textarea
           id="Description"
@@ -182,10 +183,10 @@ export default function AddBookForm() {
           value={bookForm.description}
           onChange={handleBookFormChange}
           placeholder="Description of the book"
-          className="w-full rounded"
+          className="w-full rounded "
         />
         {errors.description && (
-          <p className="text-sm text-red-500">{errors.description}</p>
+          <p className="text-sm text-red">{errors.description}</p>
         )}
       </div>
       <div className="flex flex-col gap-1 items-start w-full">
@@ -209,12 +210,12 @@ export default function AddBookForm() {
           onUploadError={(error: Error) => {
             alert(`ERROR! ${error.message}`);
           }}
-          className="w-full rounded border border-input px-4 py-2"
+          className="w-full rounded border border-input px-4 py-2 bg-input/30 text-muted-foreground "
         />
-        {errors.book && <p className="text-sm text-red-500">{errors.book}</p>}
+        {errors.book && <p className="text-sm text-red">{errors.book}</p>}
       </div>
       <Button
-        className="cursor-pointer w-full disabled:bg-muted"
+        className="cursor-pointer w-full disabled:bg-muted "
         disabled={loading}
         type="submit"
       >
