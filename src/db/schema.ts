@@ -8,5 +8,6 @@ export const Books = pgTable("books", {
   category: text("category").notNull(),
   description: text("description"),
   book: text("book"),
+  cover:text("cover"),
   userId: text("userId").notNull(),
 });

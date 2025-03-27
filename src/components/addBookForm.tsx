@@ -22,6 +22,7 @@ const initialFormState = {
   description: "",
   category: "",
   book: "",
+  cover:""
 };
 
 export default function AddBookForm() {
@@ -33,6 +34,7 @@ export default function AddBookForm() {
     description: "",
     category: "",
     book: "",
+    cover:""
   });
 
   const handleBookFormChange = (
@@ -61,6 +63,7 @@ export default function AddBookForm() {
       category: "",
       description: "",
       book: "",
+      cover:""
     };
 
     if (!bookForm.title.trim()) newErrors.title = "Book Title is required.";
@@ -70,6 +73,7 @@ export default function AddBookForm() {
     if (!bookForm.description.trim())
       newErrors.description = "Book Description is required.";
     if (!bookForm.book.trim()) newErrors.book = "Book PDF  is required.";
+    if (!bookForm.cover.trim()) newErrors.cover = "Book Cover image  is required.";
 
     setErrors(newErrors);
 
@@ -208,11 +212,36 @@ export default function AddBookForm() {
             }));
           }}
           onUploadError={(error: Error) => {
-            alert(`ERROR! ${error.message}`);
+            console.log(`ERROR! ${error.message}`);
           }}
           className="w-full rounded border border-input px-4 py-2 bg-input/30 text-muted-foreground "
         />
         {errors.book && <p className="text-sm text-red">{errors.book}</p>}
+      </div>
+      <div className="flex flex-col gap-1 items-start w-full">
+        <Label htmlFor="book" className="text-sm font-medium">
+          Cover Image
+          <span className="text-red text-lg">*</span>
+        </Label>
+        <UploadButton
+          endpoint="imageUploader"
+          onClientUploadComplete={(res) => {
+            console.log(res);
+            setBookForm((prev) => ({
+              ...prev,
+              cover: res[0].ufsUrl,
+            }));
+            setErrors((prev) => ({
+              ...prev,
+              cover: "",
+            }));
+          }}
+          onUploadError={(error: Error) => {
+            console.log(`ERROR! ${error.message}`);
+          }}
+          className="w-full rounded border border-input px-4 py-2 bg-input/30 text-muted-foreground "
+        />
+        {errors.cover && <p className="text-sm text-red">{errors.cover}</p>}
       </div>
       <Button
         className="cursor-pointer w-full disabled:bg-muted "

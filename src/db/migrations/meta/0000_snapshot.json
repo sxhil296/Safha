@@ -1,5 +1,5 @@
 {
-  "id": "78f39b50-ea1f-4947-91ef-976388d96bcd",
+  "id": "d80491d7-be5b-4c39-96be-2b1e8a6a75c9",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -47,6 +47,12 @@
         },
         "book": {
           "name": "book",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cover": {
+          "name": "cover",
           "type": "text",
           "primaryKey": false,
           "notNull": false

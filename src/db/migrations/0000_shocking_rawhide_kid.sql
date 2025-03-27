@@ -6,5 +6,6 @@ CREATE TABLE "books" (
 	"category" text NOT NULL,
 	"description" text,
 	"book" text,
+	"cover" text,
 	"userId" text NOT NULL
 );

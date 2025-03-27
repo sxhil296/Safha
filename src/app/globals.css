@@ -7,13 +7,12 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@theme{
-  --color-red: #EE4B2B;
-  --color-green : #b0e681;
+@theme {
+  --color-red: #ee4b2b;
+  --color-green: #b0e681;
 }
 
 @theme inline {
- 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -106,7 +105,6 @@
   --color-3: hsl(210 100% 63%);
   --color-4: hsl(195 100% 63%);
   --color-5: hsl(90 100% 63%);
- 
 }
 
 .dark {
@@ -155,4 +153,8 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+html {
+  scroll-behavior: smooth;
+  scroll-duration: 500ms;
 }

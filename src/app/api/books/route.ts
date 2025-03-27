@@ -8,7 +8,7 @@ export async function POST(request: Request) {
   const id = randomUUID();
   const { userId, redirectToSignIn } = await auth();
   if (!userId) return redirectToSignIn();
-  const { title, author, category, description, book } = body;
+  const { title, author, category, description, book, cover } = body;
   console.log(">>>>", id, title, author, category, description, userId);
   const newBook = await db.insert(Books).values({
     id,
@@ -17,6 +17,7 @@ export async function POST(request: Request) {
     category,
     description,
     book,
+    cover,
     userId,
   });
 
@@ -28,7 +29,7 @@ export async function POST(request: Request) {
 }
 
 // get all books
-export async function GET(request: Request) {
+export async function GET(_request: Request) {
   const books = await db.select().from(Books);
   return new Response(JSON.stringify(books));
 }
