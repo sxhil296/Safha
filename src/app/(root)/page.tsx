@@ -1,6 +1,6 @@
 
 import BookList from "@/components/bookList";
-import HeroSection from "@/components/hero-section";
+import HeroSection from "@/components/hero";
 // import { db } from "@/db";
 // import { sql } from "drizzle-orm";
 

@@ -1,5 +1,5 @@
-import FooterSection from "@/components/footer";
-import { HeroHeader } from "@/components/hero5-header";
+import FooterSection from "@/components/layout/footer";
+import { HeroHeader } from "@/components/layout/header";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
