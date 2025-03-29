@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import BookCard from "./bookCard";
+import BookCardSkeleton from "./skeletons/bookCardSkeleton";
 export type Book = {
   id: string;
   title: string;
@@ -46,6 +47,8 @@ export default function BookList() {
       id="books"
       className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 max-w-7xl px-6 mx-auto"
     >
+      {loading &&
+        Array.from({ length: 3 }).map((_, index) => <BookCardSkeleton key={index} />)}
       {books.map((book) => (
         <BookCard
           key={book?.id}
