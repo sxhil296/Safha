@@ -29,6 +29,7 @@ export async function POST(request: Request) {
 }
 
 // get all books
+export const dynamic = "force-static";
 export async function GET(_request: Request) {
   const books = await db.select().from(Books);
   return new Response(JSON.stringify(books));
