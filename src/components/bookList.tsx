@@ -1,18 +1,11 @@
 "use client";
-import Image from "next/image";
+
 import { useEffect, useState } from "react";
 import BookCard from "./bookCard";
 import BookCardSkeleton from "./skeletons/bookCardSkeleton";
-export type Book = {
-  id: string;
-  title: string;
-  author: string;
-  category: string;
-  description: string;
-  book: string;
-  cover:string;
-  userId: string;
-};
+import { Book } from "@/types";
+
+
 
 export const categories = [
   "all",

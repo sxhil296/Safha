@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import React from "react";
 import { cn } from "@/lib/utils";
 import { SparklesText } from "../magicui/sparkles-text";
-import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import {  SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
 
 export const HeroHeader = () => {

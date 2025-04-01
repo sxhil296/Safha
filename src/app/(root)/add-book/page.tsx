@@ -14,9 +14,8 @@ export default function AddBookPage() {
  
 
   return (
-    <div className="w-full mt-20">
+    <div className="w-full mt-20 ">
       <Container >
-        <div>Add Book</div>
        <AddBookForm />
       </Container>
     </div>
