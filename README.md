@@ -4,5 +4,6 @@
 
 ## TODOS :
 
-- [] scaffold basic UI
-- [] add clerk
+- [x] scaffold basic UI
+- [x] add clerk
+- [x] xata postgresql
