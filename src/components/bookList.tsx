@@ -51,11 +51,11 @@ export default function BookList() {
     : books.filter((book) => book.category === selectedCategory);
 
   return (
-   <section className="max-w-6xl mx-auto my-14 md:my-20">
+   <section className="w-full flex justify-center items-center flex-col md:max-w-6xl mx-auto my-14 md:my-20">
 
     {/* tabs */}
-    <div className="my-14 md:mt-20 md:mb-16 max-w-md mx-auto">
-      <ul className="flex w-full gap-4  border-b border-b-muted justify-center items-center">
+    <div className="my-14 md:mt-20 md:mb-16 w-full">
+      <ul className="flex w-full gap-4  border-b border-b-muted justify-center items-center flex-wrap">
       {categories.map((category) => (
             <li
               key={category}

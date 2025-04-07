@@ -64,9 +64,9 @@ export const HeroHeader = () => {
                       </Button>
                     </SignedOut>
 
-                    <div className="flex justify-center gap-2">
+                    <div className="flex  justify-start items-start  flex-col md:flex-row gap-3">
                       <SignedIn>
-                        <Link href="/my-books">
+                        <Link href="/my-books"      onClick={() => setMenuState(false)}>
                           <span
                             className={`font-normal text-lg hover:text-[#b0e681] ${
                               pathname === "my-books" && "text-[#b0e681]"
@@ -77,13 +77,13 @@ export const HeroHeader = () => {
                         </Link>
                       </SignedIn>
                       <SignedIn>
-                        <Link href="/add-book">
+                        <Link href="/add-book"     onClick={() => setMenuState(false)}>
                           <span
                             className={`font-normal text-lg hover:text-[#b0e681] ${
                               pathname === "add-book" && "text-[#b0e681]"
                             }`}
                           >
-                            Add Book
+                            Upload Book
                           </span>
                         </Link>
                       </SignedIn>

@@ -106,8 +106,8 @@ export default function AddBookForm() {
         <div>Fill in the details below to add a new book to the library</div>
 
       <div className="pt-6">
-        <form className="flex flex-col w-full items-start gap-6" onSubmit={handleBookFormSubmit}>
-          <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-6">
+        <form className="flex flex-col w-full items-start gap-4 md:gap-6" onSubmit={handleBookFormSubmit}>
+          <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-4 md:gap-6">
             <div className="space-y-2">
               <Label htmlFor="title" className="text-sm font-medium flex items-center gap-2">
                 <FileText className="h-4 w-4" />

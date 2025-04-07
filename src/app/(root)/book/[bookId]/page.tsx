@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Book } from "@/types";
 import { useSession } from "@clerk/nextjs";
-import { Download, Tag } from "lucide-react";
+import { Calendar, Download, Tag } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -41,16 +41,16 @@ export default function BookPage({
     fetchBookById();
   }, []);
 
-  // console.log(book)
+  console.log(book)
   // console.log(session?.user);
 
   return (
-    <section className="w-full max-w-7xl my-12 md:my-20 mx-auto px-4 md:px-6">
-    <div className="overflow-hidden border-none shadow-lg">
+    <section className="w-full md:max-w-7xl my-20  mx-auto px-4 flex justify-center items-center md:items-start">
+    <div className="overflow-hidden w-full">
    
-        <div className="flex flex-col md:flex-row">
+        <div className="flex flex-col md:flex-row gap-4 md:gap-8">
           {/* Book Cover Column */}
-          <div className="w-full md:w-[550px] px-4 rounded-md">
+          <div className="w-full md:max-w-[280px] px-4 rounded-md">
             <div className="relative aspect-[2/3] w-full md:h-full overflow-hidden rounded-md">
               {isImageLoading && <Skeleton className="absolute inset-0 z-10" />}
               <Image
@@ -64,28 +64,27 @@ export default function BookPage({
           </div>
 
           {/* Book Details Column */}
-          <div className="w-full md:w-3/5 lg:w-2/3 p-6 md:p-8 flex flex-col">
+          <div className="w-full md:w-3/5 lg:w-2/3  flex flex-col">
             <div className="flex flex-col gap-4 flex-grow">
               {/* Title and Author */}
               <div className="space-y-2">
                 <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight">{book?.title}</h1>
-                <p className="text-lg md:text-xl text-muted-foreground">By {book?.author}</p>
+                <p className="text-lg md:text-xl text-muted-foreground">Author :  {book?.author}</p>
               </div>
 
               {/* Metadata */}
               <div className="flex flex-wrap gap-2 my-2">
-                {book?.category && (
+             
                   <Badge variant="secondary" className="flex items-center gap-1">
                     <Tag className="h-3 w-3" />
-                    {book.category}
+                    {book?.category}
                   </Badge>
-                )}
-                {/* {book?.createdTS && (
+             
                   <Badge variant="outline" className="flex items-center gap-1">
                     <Calendar className="h-3 w-3" />
-                    {book.publishedDate}
+                    {book?.createTs}
                   </Badge>
-                )} */}
+         
                 {/* {book?.pages && (
                   <Badge variant="outline" className="flex items-center gap-1">
                     <BookOpen className="h-3 w-3" />
@@ -123,7 +122,7 @@ export default function BookPage({
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 mt-6">
               {book?.book && (
-                <Button size="lg" className="gap-2 flex-1" asChild>
+                <Button size="lg" className="gap-2 flex-1 px-4 py-2" asChild>
                  <Link href={book?.book}> <Download className="h-4 w-4" />
                  Download & Read</Link>
                 </Button>

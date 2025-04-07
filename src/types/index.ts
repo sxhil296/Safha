@@ -7,4 +7,5 @@ export type Book = {
   book: string;
   cover: string;
   userId: string;
+  createTs: string;
 };
