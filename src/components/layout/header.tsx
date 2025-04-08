@@ -65,7 +65,7 @@ export const HeroHeader = () => {
                     </SignedOut>
 
                     <div className="flex  justify-start items-start  flex-col md:flex-row gap-3">
-                      <SignedIn>
+                      {/* <SignedIn>
                         <Link href="/my-books"      onClick={() => setMenuState(false)}>
                           <span
                             className={`font-normal text-lg hover:text-[#b0e681] ${
@@ -75,7 +75,7 @@ export const HeroHeader = () => {
                             My Books
                           </span>
                         </Link>
-                      </SignedIn>
+                      </SignedIn> */}
                       <SignedIn>
                         <Link href="/add-book"     onClick={() => setMenuState(false)}>
                           <span
